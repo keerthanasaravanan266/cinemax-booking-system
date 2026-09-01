@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Date</title>
+
+    <style>
+        body {
+            font-family: Poppins;
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+
+        .date-btn {
+            margin: 10px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: #222;
+            color: white;
+        }
+
+        .date-btn:hover {
+            background: #e71a0f;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Select Date</h2>
+
+<form method="POST" action="/save_date">
+
+{% for d in dates %}
+<button class="date-btn" name="date" value="{{ d }}">
+    {{ d }}
+</button>
+{% endfor %}
+
+</form>
+
+</body>
+</html>

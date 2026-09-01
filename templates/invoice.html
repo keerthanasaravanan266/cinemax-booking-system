@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+
+        .container {
+            width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #e71a0f;
+            text-align: center;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .section-title {
+            margin-top: 25px;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            background: #f0f0f0;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #e71a0f;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #e71a0f, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🧾 Booking Invoice</h2>
+
+    <div class="info">
+        <p><strong>Name:</strong> {{ session['name'] }}</p>
+        <p><strong>Phone:</strong> {{ session['phone'] }}</p>
+        <p><strong>Movie:</strong> {{ session['movie'] }}</p>
+    </div>
+
+    <!-- 🎟 SEATS -->
+    <div class="section-title">🎟 Seats</div>
+    <table>
+        <tr>
+            <th>Row</th>
+            <th>Seat</th>
+            <th>Price</th>
+        </tr>
+
+        {% for s in seats %}
+        <tr>
+            <td>{{ s[0] }}</td>
+            <td>{{ s[1] }}</td>
+            <td>₹{{ s[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- 🍿 SNACKS -->
+    <div class="section-title">🍿 Snacks</div>
+
+    {% if snacks %}
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Amount</th>
+        </tr>
+
+        {% for s in snacks %}
+        <tr>
+            <td>{{ s[0] }}</td>
+            <td>{{ s[1] }}</td>
+            <td>₹{{ s[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+    <p style="color: gray; margin-top:10px;">No snacks ordered</p>
+    {% endif %}
+
+    <!-- 💰 TOTAL -->
+    <div class="total">
+        Total Paid: ₹{{ total }}
+    </div>
+
+    <!-- 🎟 BUTTON -->
+    <div class="btn-container">
+        <a href="/my_tickets">
+            <button class="btn">🎟 My Tickets</button>
+        </a>
+        <a href="/download_ticket">
+            <button class="btn">⬇ Download Ticket</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

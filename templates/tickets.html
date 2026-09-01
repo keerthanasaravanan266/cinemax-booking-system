@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tickets</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins';
+            background: #0f172a;
+            color: white;
+            margin: 0;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #e71a0f, #ff4b2b);
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .container {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ticket-card {
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .ticket-card:hover {
+            transform: scale(1.05);
+        }
+
+        .movie {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .price {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #facc15;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">🎟 My Tickets</div>
+
+<div class="container">
+
+{% for t in tickets %}
+<div class="ticket-card">
+
+    <div class="movie">🎬 {{ t[1] }}</div>
+
+    Booking ID: {{ t[0] if t[0] else "N/A" }}
+    <div class="info">Seats: {{ t[2] }}</div>
+
+    <div class="price">₹{{ t[3] }}</div>
+
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>

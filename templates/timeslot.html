@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Time</title>
+
+    <style>
+        body {
+            font-family: Poppins;
+            text-align: center;
+        }
+
+        .card {
+            margin: 20px;
+            padding: 15px;
+            background: #eee;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: #e71a0f;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Select Time Slot</h2>
+
+<form method="POST" action="/select_timeslot">
+
+{% for t in data[0][1:] %}
+    <button class="card" name="timeslot" value="{{ t }}">
+        {{ t }}
+    </button>
+{% endfor %}
+
+</form>
+
+</body>
+</html>
