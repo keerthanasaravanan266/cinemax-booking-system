@@ -586,6 +586,4 @@ Possible improvements include:
 
 ## License
 
-This project is intended for educational and demonstration purposes.
-
-Add an appropriate open-source license if the project is intended to be publicly distributed.
+This project is intended for educational and demonstration purposes. This was built for the Database Management Course Project.
